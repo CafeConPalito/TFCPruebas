@@ -1,0 +1,28 @@
+* necesitamos usar un Recycler View permite crear listas dinamicas de Objetos para mostrar
+* Para separar Items dentrol de las Recycler View el item dentro de un CardView
+* Shared Preferences para guardar persistencias
+
+*Pictogramas (iconos chulos)
+https://pictogrammers.com/library/mdi/
+
+* Trasnforma Json a Clases Java / Kotlin
+jsonschema2pojo.org
+
+----------------------
+ACCEDER A APIS
+
+Maven / Gradel
+
+* Picasso (Descarga imagenes para mostrar)
+* RetoFit (Acceder a Apis, este te da que JSON tienes que usar y como)
+* RetoFit (Gson o Jacson)
+* Gson o Jacson (Transformar Json)
+
+PARA DAR ACCESO A INTERNET
+
+Manifest
+<uses-permission android:name"android.permission.INTERNET"/>
+
+----------------------
+JET PACK
+Android Anotations
