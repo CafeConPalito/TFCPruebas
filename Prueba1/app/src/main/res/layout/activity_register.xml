@@ -10,8 +10,8 @@
     <TextView
         android:id="@+id/tvreg1"
         android:layout_width="match_parent"
-        android:layout_height="119dp"
-        android:fontFamily="casual"
+        android:layout_height="91dp"
+        android:fontFamily="sans-serif"
         android:gravity="center"
         android:text="REGISTRAR"
         android:textSize="34sp"
@@ -20,7 +20,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="168dp"
+        android:layout_height="190dp"
         app:srcCompat="@drawable/logo" />
 
     <TextView
@@ -65,10 +65,13 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="63dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:onClick="guardar"
         android:text="GUARDAR"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+
+
 
 </LinearLayout>
