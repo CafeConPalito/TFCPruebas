@@ -2,10 +2,97 @@ package com.cafeconpalito.pruebas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var etTask: EditText
+    lateinit var btnAddTask: Button
+    lateinit var rvTasks: RecyclerView
+
+    lateinit var adapter:TaskAdapter
+
+    var tasks = mutableListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        initUi() //Inicializa la UI
     }
+
+    /**
+     * Esto inicializa los valores necesarios para funcionar.
+     * Arranca las var que tienen lateinit
+     */
+    private fun initUi() {
+        initVariables()
+        initListeners()
+        initRecyclerView()
+    }
+
+    /**
+     * Le dice donde se encuentran los elementos de la vista activity_main.xml
+     */
+    private fun initVariables() {
+        etTask = findViewById(R.id.etAddTask)
+        btnAddTask = findViewById(R.id.btAddTask)
+        rvTasks = findViewById(R.id.rvTasks)
+    }
+
+    /**
+     * inicializa todos los listener que quiera en este metodo
+     */
+    private fun initListeners() {
+        //boton AddTask Listener on click
+        btnAddTask.setOnClickListener {addTask()}
+
+        //etTask.setOnKeyListener { addTask() }
+    }
+
+    /**
+     * Metodo que añade tareas a la lista, llamado desde el listener del Boton!
+     */
+    private fun addTask() {
+
+        val newTask = etTask.text.toString()
+        if (!newTask.isBlank()) { // Si el texto esta vacio no hace nada
+            tasks.add(newTask)
+            //prefs.saveTasks(tasks) // Guardar la info en una persistencia.
+            adapter.notifyDataSetChanged()
+            //Limpia el campo de texto
+            etTask.text.clear()
+            //etTask.setText("")
+        }
+
+    }
+
+    /**
+     * Inicializa el Recicler View para que añada la lista de elementos si los hubiera.
+     */
+    private fun initRecyclerView(){
+
+        //El estilo del la lista de Objetos para mostrar (lista vertical normalita)
+        rvTasks.layoutManager = LinearLayoutManager(this)
+        //Le paso la lista al adaptador inicialmente.
+        // Con lambda
+        adapter = TaskAdapter(tasks) { deleteTask(it) }
+        //Sin lambda
+        //adapter = TaskAdapter(tasks, {deleteTask(it)})
+        //le paso el adaptador a el Recycler View
+        rvTasks.adapter = adapter
+
+    }
+
+    /**
+     * Borra la tarea de la lista y actualiza la lista.
+     */
+    private fun deleteTask(position: Int){
+        tasks.removeAt(position)
+        adapter.notifyDataSetChanged()
+    }
+
 }
