@@ -6,8 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-
+import com.cafeconpalito.pruebas.TaskApplication.Companion.prefs
 class MainActivity : AppCompatActivity() {
 
     lateinit var etTask: EditText
@@ -52,28 +51,12 @@ class MainActivity : AppCompatActivity() {
 
         //etTask.setOnKeyListener { addTask() }
     }
-
-    /**
-     * Metodo que añade tareas a la lista, llamado desde el listener del Boton!
-     */
-    private fun addTask() {
-
-        val newTask = etTask.text.toString()
-        if (!newTask.isBlank()) { // Si el texto esta vacio no hace nada
-            tasks.add(newTask)
-            //prefs.saveTasks(tasks) // Guardar la info en una persistencia.
-            adapter.notifyDataSetChanged()
-            //Limpia el campo de texto
-            etTask.text.clear()
-            //etTask.setText("")
-        }
-
-    }
-
     /**
      * Inicializa el Recicler View para que añada la lista de elementos si los hubiera.
      */
     private fun initRecyclerView(){
+        //Para iniciar el RV necesito actualizar las Tasks.
+        tasks = prefs.getTasks()
 
         //El estilo del la lista de Objetos para mostrar (lista vertical normalita)
         rvTasks.layoutManager = LinearLayoutManager(this)
@@ -85,6 +68,25 @@ class MainActivity : AppCompatActivity() {
         //le paso el adaptador a el Recycler View
         rvTasks.adapter = adapter
 
+
+
+    }
+
+    /**
+     * Metodo que añade tareas a la lista, llamado desde el listener del Boton!
+     */
+    private fun addTask() {
+
+        val newTask = etTask.text.toString()
+        if (!newTask.isBlank()) { // Si el texto esta vacio no hace nada
+            tasks.add(newTask)
+            prefs.saveTasks(tasks) // Guardar la info en una persistencia.
+            adapter.notifyDataSetChanged()
+            //Limpia el campo de texto
+            etTask.text.clear()
+            //etTask.setText("")
+        }
+
     }
 
     /**
@@ -92,6 +94,7 @@ class MainActivity : AppCompatActivity() {
      */
     private fun deleteTask(position: Int){
         tasks.removeAt(position)
+        prefs.saveTasks(tasks)
         adapter.notifyDataSetChanged()
     }
 

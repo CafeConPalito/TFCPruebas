@@ -1,6 +1,7 @@
 * necesitamos usar un Recycler View permite crear listas dinamicas de Objetos para mostrar
 * Para separar Items dentrol de las Recycler View el item dentro de un CardView
 * Shared Preferences para guardar persistencias
+	Es necesario añadir al manifest la clase ":Application()" que es la que se iniciara antes de que inicie como tal la app
 
 *Pictogramas (iconos chulos)
 https://pictogrammers.com/library/mdi/
@@ -22,6 +23,7 @@ PARA DAR ACCESO A INTERNET
 
 Manifest
 <uses-permission android:name"android.permission.INTERNET"/>
+
 
 ----------------------
 JET PACK
