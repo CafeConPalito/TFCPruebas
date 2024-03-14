@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
+        tasks = prefs.getTasks()
         rvTasks.layoutManager = LinearLayoutManager(this)
         adapter = TaskAdapter(tasks, this::deleteTask)
         rvTasks.adapter = adapter
