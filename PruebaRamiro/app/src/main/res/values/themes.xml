@@ -1,8 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.PruebaRamiro" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!--<item name="colorPrimary">#908D8D</item>
+        <item name="colorPrimaryVariant">#FF8080</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#907ED3</item>
+        <item name="colorSecondaryVariant">#FF8080</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="colorSurface">#E8D9D9</item> -->
     </style>
 
     <style name="Theme.PruebaRamiro" parent="Base.Theme.PruebaRamiro" />
