@@ -23,4 +23,5 @@ class TaskApplication:Application() {
         //se le pasa un contexto en este caso el baseContext que es el contexto general
         prefs = Preferences(baseContext)
     }
+
 }

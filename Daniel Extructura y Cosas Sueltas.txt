@@ -6,8 +6,11 @@
 *Pictogramas (iconos chulos)
 https://pictogrammers.com/library/mdi/
 
-* Trasnforma Json a Clases Java / Kotlin
+* Trasnforma Json a Clases Java Kotlin
 jsonschema2pojo.org
+
+* Trasnforma Json a Clases Kotlin
+https://transform.tools/json-to-kotlin
 
 ----------------------
 ACCEDER A APIS
@@ -16,13 +19,29 @@ Maven / Gradel
 
 * Picasso (Descarga imagenes para mostrar)
 * RetoFit (Acceder a Apis, este te da que JSON tienes que usar y como)
-* RetoFit (Gson o Jacson)
-* Gson o Jacson (Transformar Json)
+* RetoFit (Gson o Jakson)
+* Gson o Jakson (Transformar Json)
+
+    //Picasso para descargar imagenes
+    implementation("com.squareup.picasso:picasso:2.71828")
+    
+    //Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    
+    //Para Retrofit - Jackson
+    implementation("com.squareup.retrofit2:converter-jackson:2.9.0")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.16.1")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.16.1")
+    
+    //Para Retrofit - Gson
+    //implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    //implementation("com.google.code.gson:gson:2.8.8")
 
 PARA DAR ACCESO A INTERNET
 
 Manifest
-<uses-permission android:name"android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.INTERNET"/>
 
 
 ----------------------

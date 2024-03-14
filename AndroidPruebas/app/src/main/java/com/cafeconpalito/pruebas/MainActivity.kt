@@ -1,5 +1,6 @@
 package com.cafeconpalito.pruebas
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -12,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var etTask: EditText
     lateinit var btnAddTask: Button
     lateinit var rvTasks: RecyclerView
+    lateinit var btComics: Button
 
     lateinit var adapter:TaskAdapter
 
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         etTask = findViewById(R.id.etAddTask)
         btnAddTask = findViewById(R.id.btAddTask)
         rvTasks = findViewById(R.id.rvTasks)
+        btComics = findViewById(R.id.btComics)
     }
 
     /**
@@ -48,9 +51,22 @@ class MainActivity : AppCompatActivity() {
     private fun initListeners() {
         //boton AddTask Listener on click
         btnAddTask.setOnClickListener {addTask()}
-
+        btComics.setOnClickListener {changeViewToComics()}
         //etTask.setOnKeyListener { addTask() }
     }
+
+    /**
+     * Cambiar de vista
+     */
+    private fun changeViewToComics() {
+
+        //Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+        val intent:Intent =  Intent(this,comicController::class.java)
+
+        startActivity(intent)
+
+    }
+
     /**
      * Inicializa el Recicler View para que añada la lista de elementos si los hubiera.
      */

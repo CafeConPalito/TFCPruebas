@@ -53,11 +53,21 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btComics"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btAddTask"/>
+        app:layout_constraintTop_toBottomOf="@+id/btAddTask" />
+
+    <Button
+        android:id="@+id/btComics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver Comics"
+        app:layout_constraintTop_toBottomOf="@+id/rvTasks"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
