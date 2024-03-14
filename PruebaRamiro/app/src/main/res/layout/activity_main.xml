@@ -36,14 +36,27 @@
         app:layout_constraintEnd_toStartOf="@+id/btAddtask"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
+        android:id="@+id/rvTasks"
+        android:layout_width="412dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
-        android:id="@+id/rvTasks"
+        app:layout_constraintBottom_toTopOf="@+id/btChgView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etAddTask"
+        app:layout_constraintVertical_bias="0" />
+
+    <Button
+        android:id="@+id/btChgView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="cambiar pantalla"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAddTask" />
+        app:layout_constraintTop_toBottomOf="@+id/rvTasks"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
