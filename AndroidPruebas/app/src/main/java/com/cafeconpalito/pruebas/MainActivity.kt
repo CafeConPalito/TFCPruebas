@@ -3,24 +3,38 @@ package com.cafeconpalito.pruebas
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
+import androidx.core.os.bundleOf
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cafeconpalito.pruebas.BottonMenuFragment.Companion.BUNDLE_NOMBRE
+import com.cafeconpalito.pruebas.BottonMenuFragment.Companion.BUNDLE_SALUDO
 import com.cafeconpalito.pruebas.TaskApplication.Companion.prefs
+import com.cafeconpalito.pruebas.databinding.ActivityMainBinding
+
 class MainActivity : AppCompatActivity() {
 
-    lateinit var etTask: EditText
-    lateinit var btnAddTask: Button
-    lateinit var rvTasks: RecyclerView
-    lateinit var btComics: Button
+    //Se utiliza para obtener toda la componentes e informacion que tiene un Layout
+    private lateinit var binding: ActivityMainBinding
 
-    lateinit var adapter:TaskAdapter
+    private lateinit var rvTasks: RecyclerView
+    private lateinit var etAddTask: EditText
 
-    var tasks = mutableListOf<String>()
+    //Inicializados con Binding
+    //lateinit var btnAddTask: Button
+    //lateinit var btComics: Button
+
+    private lateinit var adapter:TaskAdapter
+
+    private var tasks = mutableListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        //Inicializo el binding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initUi() //Inicializa la UI
     }
@@ -33,16 +47,43 @@ class MainActivity : AppCompatActivity() {
         initVariables()
         initListeners()
         initRecyclerView()
+        initFragments()
+    }
+
+    //Intanciando mi menu inferior
+    private fun initFragments() {
+
+        /*
+        //SE OCUPA DE CARGAR EL FRAGMENTO!
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add<BottonMenuFragment>(R.id.fragmentContainerView)
+        }
+        */
+
+        //LO MISMO CON ARGUMENTOS CON ARGUMENTOS!
+        val bundle = bundleOf(BUNDLE_SALUDO to "Hola Holita", BUNDLE_NOMBRE to " Ramiro")
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add<BottonMenuFragment>(R.id.fragmentContainerView, args = bundle)
+        }
+
     }
 
     /**
      * Le dice donde se encuentran los elementos de la vista activity_main.xml
      */
     private fun initVariables() {
-        etTask = findViewById(R.id.etAddTask)
-        btnAddTask = findViewById(R.id.btAddTask)
-        rvTasks = findViewById(R.id.rvTasks)
-        btComics = findViewById(R.id.btComics)
+
+        etAddTask = binding.etAddTask
+
+        rvTasks = binding.rvTasks
+        //rvTasks = findViewById(R.id.rvTasks)
+
+        //Declaracion anulada con Binding
+        //btnAddTask = findViewById(R.id.btAddTask)
+        //btComics = findViewById(R.id.btComics)
+
     }
 
     /**
@@ -50,8 +91,8 @@ class MainActivity : AppCompatActivity() {
      */
     private fun initListeners() {
         //boton AddTask Listener on click
-        btnAddTask.setOnClickListener {addTask()}
-        btComics.setOnClickListener {changeViewToComics()}
+        binding.btAddTask.setOnClickListener {addTask()}
+        binding.btComics.setOnClickListener {changeViewToComics()}
         //etTask.setOnKeyListener { addTask() }
     }
 
@@ -61,7 +102,7 @@ class MainActivity : AppCompatActivity() {
     private fun changeViewToComics() {
 
         //Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-        val intent:Intent =  Intent(this,comicController::class.java)
+        val intent =  Intent(this,comicActivity::class.java)
 
         startActivity(intent)
 
@@ -93,13 +134,20 @@ class MainActivity : AppCompatActivity() {
      */
     private fun addTask() {
 
-        val newTask = etTask.text.toString()
-        if (!newTask.isBlank()) { // Si el texto esta vacio no hace nada
+        val newTask = etAddTask.text.toString()
+        if (newTask.isNotBlank()) { // Si el texto esta vacio no hace nada
             tasks.add(newTask)
             prefs.saveTasks(tasks) // Guardar la info en una persistencia.
+
+
+
+            //Seria el Correcto no me gusta tanto me quedo con el que revisa todo.
+            //adapter.notifyItemInserted(tasks.size)
+
             adapter.notifyDataSetChanged()
+
             //Limpia el campo de texto
-            etTask.text.clear()
+            etAddTask.text.clear()
             //etTask.setText("")
         }
 
@@ -111,7 +159,11 @@ class MainActivity : AppCompatActivity() {
     private fun deleteTask(position: Int){
         tasks.removeAt(position)
         prefs.saveTasks(tasks)
-        adapter.notifyDataSetChanged()
+
+        //Correcto aviso de que borro algo
+        adapter.notifyItemRemoved(position)
+        //Metodo antiguo que revisa toda la lista
+        //adapter.notifyDataSetChanged()
     }
 
 }

@@ -33,6 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures{
+        viewBinding= true
+    }
 }
 
 dependencies {
@@ -53,12 +57,23 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-core:2.16.1")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.16.1")
+    implementation("androidx.activity:activity:1.8.2")
 
     //Para Retrofit - Gson
     //implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     //implementation("com.google.code.gson:gson:2.8.8")
 
+    //Para implementar fragmentos, PUEDE NO SER NECESARIA
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+
+
+
+
+
+
 }
