@@ -1,7 +1,10 @@
 package com.cafeconpalito.pruebas
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 /**
@@ -26,7 +29,7 @@ class TaskAdapter(private val tasks:List<String>,private val onItemDone:(Int)-> 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         holder.render(tasks[position], onItemDone)
     }
-
+    
     /**
      * Se ocupa de decir donde esta la vista (XML) para poder generarla y la devuelve.
      */
@@ -34,4 +37,5 @@ class TaskAdapter(private val tasks:List<String>,private val onItemDone:(Int)-> 
         val layoutInflater:LayoutInflater = LayoutInflater.from(parent.context)
         return TaskViewHolder(layoutInflater.inflate(R.layout.item_task,parent,false))
     }
+
 }
