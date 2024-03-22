@@ -1,11 +1,9 @@
-package com.cafeconpalito.pruebas
+package com.cafeconpalito.pruebas.activity_controllers
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.cafeconpalito.pruebas.R
 
 /**
  * Adapter se ocupa de controlar las ViewHolder (TaskViewHolder)

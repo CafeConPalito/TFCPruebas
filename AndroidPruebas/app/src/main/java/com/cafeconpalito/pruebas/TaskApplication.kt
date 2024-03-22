@@ -1,6 +1,7 @@
 package com.cafeconpalito.pruebas
 
 import android.app.Application
+import com.cafeconpalito.pruebas.preferences.Preferences
 
 /**
  * OJO AÑADIRLO AL MANIFEST!!!!!!
@@ -16,7 +17,7 @@ class TaskApplication:Application() {
      * para poder acceder a la variable desde la app se mete dentro del companion object
      */
     companion object{
-        lateinit var prefs:Preferences
+        lateinit var prefs: Preferences
     }
     override fun onCreate() {
         super.onCreate()

@@ -63,11 +63,11 @@
         android:id="@+id/btComics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ver Comics"
+        android:text="Comics"
         app:layout_constraintTop_toBottomOf="@+id/rvTasks"
         app:layout_constraintBottom_toTopOf="@id/fragmentContainerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/btSuperHero" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
@@ -77,5 +77,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btSuperHero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rick Morty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btComics"
+        app:layout_constraintTop_toBottomOf="@id/rvTasks"
+        app:layout_constraintBottom_toTopOf="@id/fragmentContainerView"
+        tools:layout_editor_absoluteY="634dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

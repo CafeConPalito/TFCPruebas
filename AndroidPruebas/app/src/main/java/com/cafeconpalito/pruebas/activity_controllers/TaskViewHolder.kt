@@ -1,4 +1,4 @@
-package com.cafeconpalito.pruebas
+package com.cafeconpalito.pruebas.activity_controllers
 
 import android.view.View
 import android.widget.ImageView

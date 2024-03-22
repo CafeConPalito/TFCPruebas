@@ -1,5 +1,6 @@
 package com.cafeconpalito.pruebas
 
+import com.cafeconpalito.pruebas.activity_controllers.ComicActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,9 +10,12 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cafeconpalito.pruebas.BottonMenuFragment.Companion.BUNDLE_NOMBRE
-import com.cafeconpalito.pruebas.BottonMenuFragment.Companion.BUNDLE_SALUDO
+import com.cafeconpalito.pruebas.activity_controllers.BottonMenuFragment.Companion.BUNDLE_NOMBRE
+import com.cafeconpalito.pruebas.activity_controllers.BottonMenuFragment.Companion.BUNDLE_SALUDO
 import com.cafeconpalito.pruebas.TaskApplication.Companion.prefs
+import com.cafeconpalito.pruebas.activity_controllers.BottonMenuFragment
+import com.cafeconpalito.pruebas.activity_controllers.RickMortyActivity
+import com.cafeconpalito.pruebas.activity_controllers.TaskAdapter
 import com.cafeconpalito.pruebas.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     //lateinit var btnAddTask: Button
     //lateinit var btComics: Button
 
-    private lateinit var adapter:TaskAdapter
+    private lateinit var adapter: TaskAdapter
 
     private var tasks = mutableListOf<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +52,15 @@ class MainActivity : AppCompatActivity() {
         initListeners()
         initRecyclerView()
         initFragments()
+        initApiConection()
+    }
+
+    /**
+     * Crea el servicio para conectar a la Api
+     */
+    private fun initApiConection() {
+        //Construye la conexion a la API
+
     }
 
     //Intanciando mi menu inferior
@@ -93,20 +106,27 @@ class MainActivity : AppCompatActivity() {
         //boton AddTask Listener on click
         binding.btAddTask.setOnClickListener {addTask()}
         binding.btComics.setOnClickListener {changeViewToComics()}
+        binding.btSuperHero.setOnClickListener { changeVienToRickMorty() }
         //etTask.setOnKeyListener { addTask() }
+    }
+
+    private fun changeVienToRickMorty() {
+        val intent =  Intent(this,RickMortyActivity::class.java)
+        startActivity(intent)
     }
 
     /**
      * Cambiar de vista
      */
+
     private fun changeViewToComics() {
 
         //Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-        val intent =  Intent(this,comicActivity::class.java)
-
+        val intent =  Intent(this, ComicActivity::class.java)
         startActivity(intent)
 
     }
+
 
     /**
      * Inicializa el Recicler View para que añada la lista de elementos si los hubiera.
@@ -138,8 +158,6 @@ class MainActivity : AppCompatActivity() {
         if (newTask.isNotBlank()) { // Si el texto esta vacio no hace nada
             tasks.add(newTask)
             prefs.saveTasks(tasks) // Guardar la info en una persistencia.
-
-
 
             //Seria el Correcto no me gusta tanto me quedo con el que revisa todo.
             //adapter.notifyItemInserted(tasks.size)

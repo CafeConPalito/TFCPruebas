@@ -4,12 +4,6 @@
     <!-- Permiso de coneccion a internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!--
-    Estilo original ir a themes para modificarlos.
-    android:theme="@style/Theme.PruebasDaniel"
-    Estilo de base, tenemos muchos!
-    android:theme="@style/Theme.AppCompat.NoActionBar"
-     -->
     <application
         android:name=".TaskApplication"
         android:allowBackup="true"
@@ -22,7 +16,10 @@
         android:theme="@style/Theme.AppCompat.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".comicActivity"
+            android:name=".activity_controllers.RickMortyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity_controllers.ComicActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

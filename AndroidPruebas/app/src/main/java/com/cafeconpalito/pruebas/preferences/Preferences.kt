@@ -1,4 +1,4 @@
-package com.cafeconpalito.pruebas
+package com.cafeconpalito.pruebas.preferences
 
 import android.content.Context
 import android.content.SharedPreferences
