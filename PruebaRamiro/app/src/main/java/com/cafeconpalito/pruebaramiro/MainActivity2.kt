@@ -1,5 +1,6 @@
 package com.cafeconpalito.pruebaramiro
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -25,7 +26,7 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     private fun changeView() {
-        intent.setClass(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 }
