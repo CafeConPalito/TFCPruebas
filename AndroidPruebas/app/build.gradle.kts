@@ -37,9 +37,6 @@ android {
     viewBinding{
         enable= true
     }
-    buildFeatures {
-        viewBinding = true
-    }
 
     /*
     Version antigua de llamar a los View Bindings
@@ -47,6 +44,7 @@ android {
         viewBinding= true
     }
     */
+
 }
 
 dependencies {
