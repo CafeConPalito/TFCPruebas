@@ -7,13 +7,62 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <!--
+     Necesario para que el fragmento funciones correctamente
+             android:name="androidx.navigation.fragment.NavHostFragment"
+
+     Es enecesario ponerle un ID
+
+     Refleja quien es el fragmento principal, al darle para atras carga este!
+            app:defaultNavHost="true"
+     -->
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/main_graph"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Menu inferior
+            Referencia al menu!
+             app:menu="@menu/bottom_menu"
+
+             Color de fondo
+            android:background="@color/primaryDark"
+
+        Estado de los iconos y text
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:itemTextColor="@color/bottom_nav_selector"
+
+        Quita la seleccion fea del menu
+        app:itemActiveIndicatorStyle="@null"
+     -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:menu="@menu/bottom_menu"
+
+        android:background="@color/primaryDark"
+
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:itemTextColor="@color/bottom_nav_selector"
+
+        app:itemActiveIndicatorStyle="@null"
+
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
