@@ -1,6 +1,13 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+
+    //DaggerHilt
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
+    //Es lo mismo
+    //id("com.google.devtools.ksp")version "1.9.10-1.0.13"
+    //id("com.google.dagger.hilt.android")version "2.50"
 }
 
 android {
@@ -47,6 +54,13 @@ dependencies {
     //navigation Fragments
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+    //DaggerHilt
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.hilt.android)
+    //Es lo mismo
+    //implementation("com.google.dagger:hilt-android:2.50")
+    //ksp("com.google.dagger:hilt-android-compiler:2.50")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

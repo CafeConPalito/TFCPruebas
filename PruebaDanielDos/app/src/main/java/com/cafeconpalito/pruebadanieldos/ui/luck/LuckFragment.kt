@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import com.cafeconpalito.pruebadanieldos.R
 import com.cafeconpalito.pruebadanieldos.databinding.FragmentHoroscopeBinding
 import com.cafeconpalito.pruebadanieldos.databinding.FragmentLuckBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LuckFragment : Fragment() {
 
     //Manera de trabajar con Binding y Fragmentos

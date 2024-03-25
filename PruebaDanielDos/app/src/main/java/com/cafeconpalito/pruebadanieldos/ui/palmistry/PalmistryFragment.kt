@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import com.cafeconpalito.pruebadanieldos.R
 import com.cafeconpalito.pruebadanieldos.databinding.FragmentLuckBinding
 import com.cafeconpalito.pruebadanieldos.databinding.FragmentPalmistryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PalmistryFragment : Fragment() {
 
     //Manera de trabajar con Binding y Fragmentos
