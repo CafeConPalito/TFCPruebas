@@ -37,9 +37,6 @@ android {
     viewBinding{
         enable= true
     }
-    buildFeatures {
-        viewBinding = true
-    }
 
     /*
     Version antigua de llamar a los View Bindings
@@ -47,6 +44,7 @@ android {
         viewBinding= true
     }
     */
+
 }
 
 dependencies {
@@ -80,6 +78,8 @@ dependencies {
     //Necesario para implementar los ViewModel y poder atacar a la api con Corrutinas
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+
+    //navigation Fragments
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
 

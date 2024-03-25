@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">PruebaDanielDos</string>
+
+
+
+
+
+    <!-- Bottom Bar Menu -->
+    <string name="palmistry">Palmistry</string>
+    <string name="luck">Luck</string>
+    <string name="horoscope">Horoscope</string>
+
+
+</resources>
