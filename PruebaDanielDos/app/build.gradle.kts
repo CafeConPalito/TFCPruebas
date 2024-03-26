@@ -8,6 +8,9 @@ plugins {
     //Es lo mismo
     //id("com.google.devtools.ksp")version "1.9.10-1.0.13"
     //id("com.google.dagger.hilt.android")version "2.50"
+
+    //Safeargs
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
