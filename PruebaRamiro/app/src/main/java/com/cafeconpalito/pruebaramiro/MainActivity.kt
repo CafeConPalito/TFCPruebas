@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cafeconpalito.pruebaramiro.TaskApplication.Companion.prefs
+import com.cafeconpalito.pruebaramiro.apicons.RickMortyActivity
 
 class MainActivity : AppCompatActivity() {
+
 
     lateinit var etAddTask: EditText
     lateinit var btAddTask: Button
@@ -63,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeView() {
-        val intent = Intent(this, MainActivity2::class.java)
+        val intent = Intent(this, RickMortyActivity::class.java)
         startActivity(intent)
     }
 

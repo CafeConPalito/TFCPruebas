@@ -16,7 +16,10 @@
         android:theme="@style/Theme.PruebaRamiro"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity2"
+            android:name=".apicons.DetailCharacterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".apicons.RickMortyActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
