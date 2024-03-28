@@ -10,6 +10,9 @@ plugins {
     //id("com.google.devtools.ksp")version "1.9.10-1.0.13" apply false
     //id("com.google.dagger.hilt.android")version "2.50" apply false
 
+    //Safeargs
+    id("androidx.navigation.safeargs.kotlin") version "2.7.7" apply false
+
 
 
 }

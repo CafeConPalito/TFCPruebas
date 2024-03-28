@@ -2,7 +2,8 @@ package com.cafeconpalito.pruebadanieldos.domain.model
 
 import com.cafeconpalito.pruebadanieldos.R
 
-sealed class HoroscopeInfo(img:Int, name:Int) {
+sealed class HoroscopeInfo(val img:Int,val name:Int) {
+
     data object Aries:HoroscopeInfo(R.drawable.aries, R.string.aries)
     data object Taurus: HoroscopeInfo(R.drawable.tauro, R.string.taurus)
     data object Gemini: HoroscopeInfo(R.drawable.geminis, R.string.gemini)
