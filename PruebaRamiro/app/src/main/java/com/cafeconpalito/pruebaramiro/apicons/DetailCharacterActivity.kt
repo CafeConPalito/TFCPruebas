@@ -1,6 +1,7 @@
 package com.cafeconpalito.pruebaramiro.apicons
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import com.cafeconpalito.pruebaramiro.R
@@ -38,7 +39,7 @@ class DetailCharacterActivity : AppCompatActivity() {
                 }
             }else{
                 runOnUiThread() {
-                    binding.tvnombre.text = id.toString()
+                    Toast.makeText(this@DetailCharacterActivity, "Something happened, my child. Sorry", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -48,14 +49,14 @@ class DetailCharacterActivity : AppCompatActivity() {
 
     private fun createUI(body: CharacterDetailResponse) {
 
-        val species = if (body.species.isEmpty()) "Not Set" else body.species
-        val type = if (body.type.isEmpty()) "Not Set" else body.type
+        val species = if (body.species.isEmpty()) "unknown" else body.species
+        val type = if (body.type.isEmpty()) "unknown" else body.type
 
         Picasso.get().load(body.image).into(binding.ivCharacterImage2)
         binding.tvnombre.text = body.name
-        binding.tvstatus.text = "Status: " + body.status
-        binding.tvspecies.text = "Species: " + species
-        binding.tvtype.text = "Type: " + type
+        binding.tvstatus.text = "Status: $body.status"
+        binding.tvspecies.text = "Species: $species"
+        binding.tvtype.text = "Type: $type"
 
     }
 
