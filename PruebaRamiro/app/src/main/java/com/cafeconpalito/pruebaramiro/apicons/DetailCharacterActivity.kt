@@ -48,13 +48,13 @@ class DetailCharacterActivity : AppCompatActivity() {
     }
 
     private fun createUI(body: CharacterDetailResponse) {
-
+        val status = body.status
         val species = if (body.species.isEmpty()) "unknown" else body.species
         val type = if (body.type.isEmpty()) "unknown" else body.type
 
         Picasso.get().load(body.image).into(binding.ivCharacterImage2)
         binding.tvnombre.text = body.name
-        binding.tvstatus.text = "Status: $body.status"
+        binding.tvstatus.text = "Status: $status"
         binding.tvspecies.text = "Species: $species"
         binding.tvtype.text = "Type: $type"
 
