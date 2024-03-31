@@ -1,9 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary"
     tools:context=".ui.luck.LuckFragment">
 
-</FrameLayout>
+
+    <!-- 
+    Anida dos constraisn Laiout para en el mismo fragmento apagar o encenderlos.
+    -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/clRoulete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivRoulete"
+            android:layout_width="0dp"
+            android:layout_height="400dp"
+            android:layout_marginBottom="-250dp"
+            android:src="@drawable/ruleta"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+
+            />
+
+        <!--
+
+        Inicia invisible
+        android:visibility="invisible"
+
+                Es necesario para estas animaciones que el Fragment o Activity que tiene la imagenView
+            tenga un scaleType="fitStart" para que este rellenando el espacio dodne aparece.
+        -->
+
+        <ImageView
+            android:id="@+id/ivReverseCard"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+
+            android:scaleType="fitStart"
+
+            android:src="@drawable/card_back_small"
+
+            android:visibility="invisible"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clPrediction"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <!--
+        Engancha los 3 lados de la imagen y de altura le dice que
+        ocupe el 60% de la pantalla asi en movil pequeño queda bien
+
+            app:layout_constraintHeight_percent="0.6"
+        -->
+        <ImageView
+            android:id="@+id/ivLuckyCard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintHeight_percent="0.6"
+
+            tools:background="@color/red"
+            />
+
+        <TextView
+            android:id="@+id/tvLucky"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            tools:text="TEXTO PRUEBAS BLA BLA LBASkabsdkjbjha  qiug asbd qweiu asd"
+            style="@style/Body"
+            android:gravity="center"
+
+            android:layout_margin="24dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvShare"
+            app:layout_constraintTop_toBottomOf="@+id/ivLuckyCard"
+
+            />
+
+        <TextView
+            android:id="@+id/tvShare"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:text="@string/share"
+            android:gravity="center"
+            style="@style/Body"
+
+            android:layout_marginBottom="16dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLucky"
+
+
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

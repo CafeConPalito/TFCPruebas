@@ -27,15 +27,33 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    //Tipos de Configuracion en funcion del estado de la aplicacion.
+    //Permite tener diferentes Ficheros de config segun lo que hacemos y Datos en estos
+    //Importante BASE_URL para atacar a la API DE debug y de produccion.
+    //Es necesario poner las Buidl Features -> BuildConfig = True
     buildTypes {
-        release {
+        getByName("release"){
             isMinifyEnabled = false
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            buildConfigField("String","BASE_URL" , "\"https://newastro.vercel.app/\"")
+
         }
+        getByName("debug") {
+            isDebuggable = true
+            buildConfigField("String","BASE_URL" , "\"https://newastro.vercel.app/\"")
+        }
+
     }
+
+    buildFeatures{
+        buildConfig = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -64,6 +82,14 @@ dependencies {
     //Es lo mismo
     //implementation("com.google.dagger:hilt-android:2.50")
     //ksp("com.google.dagger:hilt-android-compiler:2.50")
+
+    //Retrofit2
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    //interceptor Guarda en el log las respuestas de la API, o Añadir info a los envios AUTH, va con retrofit
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    //implementation("com.google.code.gson:gson:2.10.1")
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

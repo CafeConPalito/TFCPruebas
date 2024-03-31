@@ -1,5 +1,7 @@
 package com.cafeconpalito.pruebadanieldos.ui.detail
 
+import com.cafeconpalito.pruebadanieldos.domain.model.HoroscopeModel
+
 
 /**
  * Lo utiliza el ViewModel
@@ -8,5 +10,5 @@ package com.cafeconpalito.pruebadanieldos.ui.detail
 sealed class HoroscopeDetailState {
     data object Loading:HoroscopeDetailState()
     data class Error(val error:String):HoroscopeDetailState()
-    data class Success(val success: String):HoroscopeDetailState()
+    data class Success(val prediction: String, val sing: String, val horoscopeModel: HoroscopeModel):HoroscopeDetailState()
 }
