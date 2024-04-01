@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+
+
+
     <!-- Permiso de coneccion a internet -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Permiso de de Camara -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!-- camera.any camaras frontal y posterior -->
+    <uses-feature android:name="android.hardware.camera.any"/>
+
+    <!--
+    Para que arranque el entry Point
+    Se inicia antes que cualquier otra cosa!
+    android:name=".HoroscApp"
+    -->
 
     <application
         android:name=".HoroscApp"

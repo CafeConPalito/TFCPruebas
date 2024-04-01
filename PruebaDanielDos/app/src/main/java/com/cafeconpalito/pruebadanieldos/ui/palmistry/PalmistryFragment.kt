@@ -16,6 +16,14 @@ class PalmistryFragment : Fragment() {
     //Manera de trabajar con Binding y Fragmentos
     private var _binding: FragmentPalmistryBinding? = null
     private val binding get() = _binding!!
+    
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //Comprobamos si el permiso es correcto
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

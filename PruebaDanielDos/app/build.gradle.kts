@@ -70,9 +70,10 @@ android {
 
 dependencies {
 
-    val navVersion = "2.7.7"
+
 
     //navigation Fragments
+    val navVersion = "2.7.7"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
@@ -84,11 +85,20 @@ dependencies {
     //ksp("com.google.dagger:hilt-android-compiler:2.50")
 
     //Retrofit2
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:${retrofitVersion}")
+    implementation("com.squareup.retrofit2:converter-gson:${retrofitVersion}")
     //interceptor Guarda en el log las respuestas de la API, o Añadir info a los envios AUTH, va con retrofit
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     //implementation("com.google.code.gson:gson:2.10.1")
+
+    //Camera X
+    val cameraVersion = "1.3.2"
+    implementation ("androidx.camera:camera-core:${cameraVersion}")
+    implementation ("androidx.camera:camera-camera2:${cameraVersion}")
+    implementation ("androidx.camera:camera-lifecycle:${cameraVersion}")
+    implementation ("androidx.camera:camera-view:${cameraVersion}")
+    implementation ("androidx.camera:camera-extensions:${cameraVersion}")
 
 
     implementation(libs.androidx.core.ktx)
