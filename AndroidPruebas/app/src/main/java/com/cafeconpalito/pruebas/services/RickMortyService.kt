@@ -19,6 +19,7 @@ class RickMortyService {
             //devuelve datos si los hubiera, sino devuelve una lista vacia
             //Estoy pillando del Body solo lo que necesito en este caso los .results (Characters)
             response.body()?.results ?: emptyList()
+
         }
     }
 

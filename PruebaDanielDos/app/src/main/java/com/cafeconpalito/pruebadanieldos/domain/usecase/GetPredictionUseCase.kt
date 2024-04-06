@@ -17,4 +17,5 @@ class GetPredictionUseCase @Inject constructor(private val repository: Repositor
     suspend operator fun invoke(sign: String) = repository.getPrediction(sign)
 
 
+
 }
