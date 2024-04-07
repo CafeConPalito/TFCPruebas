@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -22,6 +23,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    //public static final String BASE_URL = "https://newastro.vercel.app/";
+    var AuthKey:String = "holi"
+
     /**
      * SINGELTON
      * Crea la conexion necesaria a la API
@@ -32,11 +36,36 @@ object NetworkModule {
     @Provides
     @Singleton
     fun providesRetrofit(okHttpClient: OkHttpClient):Retrofit{
+
+        //Sin Autorizacion
+        /*
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
+        */
+
+        /*
+        .client(OkHttpClient.Builder().addInterceptor { chain ->
+            val request = chain.request().newBuilder().addHeader("Authorization", "Bearer ${YOUR_TOKEN}").build()
+            chain.proceed(request)
+        }.build())
+        */
+
+        //CON Autorizacion
+
+
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .client(OkHttpClient.Builder().addInterceptor { chain ->
+                val request = chain.request().newBuilder().addHeader("Authorization", "Bearer ${AuthKey}").build()
+                chain.proceed(request)
+            }.build())
+            .build()
+
     }
 
     /**
@@ -55,7 +84,7 @@ object NetworkModule {
             .addInterceptor(interceptor)
             .build()
     }
-
+    
     /**
      * Construye el repositorio de API SERVICE
      */

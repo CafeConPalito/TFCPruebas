@@ -2,8 +2,8 @@ package com.cafeconpalito.pruebadanieldos.data
 
 import android.util.Log
 import com.cafeconpalito.pruebadanieldos.data.network.HoroscopeApiService
-import com.cafeconpalito.pruebadanieldos.data.network.response.PredictionResponse
 import com.cafeconpalito.pruebadanieldos.domain.Repository
+import com.cafeconpalito.pruebadanieldos.domain.model.ChickModel
 import com.cafeconpalito.pruebadanieldos.domain.model.PredictionModel
 import javax.inject.Inject
 
@@ -33,4 +33,29 @@ class RepositoryImpl @Inject constructor(private val apiService: HoroscopeApiSer
         //si falla retorna un objeto null
         return null
     }
+
+    override suspend fun getLogin(user: String, password: String): String? {
+
+        runCatching {
+            apiService.getLogin(user,password)
+        }
+            .onSuccess { return  it }
+            .onFailure { Log.i ("getLogin", "IMPOSIBLE LOGUEAR: ${it.toString()}") }
+
+        return null
+
+    }
+
+
+    override suspend fun getChiksTop(): List<ChickModel>? {
+        runCatching {
+            apiService.getChiksTop()
+        }
+            .onSuccess { return  it }
+            .onFailure { Log.i ("getChicks", "IMPOSIBLE OBTENER CHIKS: ${it.toString()}") }
+
+        return null
+    }
+
+
 }

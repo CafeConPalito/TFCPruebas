@@ -19,7 +19,6 @@ class AuthInterceptor @Inject constructor(private val tokenManager: TokenManager
             .header("Autorization",tokenManager.getToken())
             .build()
 
-
         return chain.proceed(request)
     }
 }
